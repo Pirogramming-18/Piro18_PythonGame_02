@@ -1,11 +1,8 @@
-
-
-# '함수이름' 부분에만 각자 만든 함수 이름 넣으시면 됩니다 (2군데)
-# 각자 만든 함수는 import하거나 복붙하기
-
-
 import random
 from game_369 import game_369
+from koreanGame import koreanGame
+from updown import updownGs
+from apartment import apartment
 
 players = ['윤정', '준서', '홍구', '채원', '선재']
 players_re = []
@@ -14,38 +11,8 @@ right_now_final = {}
 players_amount = [2, 4, 6, 8, 10]
 players_amount_re = []
 player_dic = {}
+playersIndex=len(players)-1
 
-
-def apartment(player, list):
-
-    print('''
---------------------------------------------------------------------------------------
-           ___                       _                            _   
-          / _ \                     | |                          | |  
-         / /_\ \ _ __    __ _  _ __ | |_  _ __ ___    ___  _ __  | |_ 
-         |  _  || '_ \  / _` || '__|| __|| '_ ` _ \  / _ \| '_ \ | __|
-         | | | || |_) || (_| || |   | |_ | | | | | ||  __/| | | || |_ 
-         \_| |_/| .__/  \__,_||_|    \__||_| |_| |_| \___||_| |_| \__|
-                | |                                                   
-                |_|                                                   
---------------------------------------------------------------------------------------
-    ''')
-    list_list_list = []
-    list_final = []
-    apart_number = int(input('10부터 30사이의 숫자를 하나 골라주세요! : '))
-
-    list_list = list + list
-    num = 0
-    random.shuffle(list_list)
-    list_final = list_list*10
-
-    for i in range(apart_number):
-        print("🤚 ", list_final[i])
-
-    print("아 누가 술을 마셔 🤔 {0}(이)가 술을 마셔 원 ~~ 샷 🍺".format(
-        list_final[apart_number-1]))
-
-    return list_final[apart_number-1]
 
 
 print('''
@@ -78,6 +45,7 @@ while (True):
         print(e)
 
 player = input('오늘 거하게 취해볼 당신의 이름은? : ')
+myself = player
 
 print('''
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 소주 기준 당신의 주량은? ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -177,12 +145,12 @@ if choice == '1':
     drink = apartment(current_player, players_re)
 elif choice == '2':
 
-    drink = game_369(current_player, players_re)
+    drink = game_369(current_player, players_re, myself)
     print("2")
 
 elif choice == '3':
 
-    # drink = 함수이름(current_player, players_re)
+    drink = koreanGame(current_player, players_re, myself)
     print("3")
 
 elif choice == '4':
@@ -260,12 +228,12 @@ while (True):
 
     elif choice == '2':
 
-        drink = game_369(current_player, players_re)
+        drink = game_369(current_player, players_re, myself)
         print("2")
 
     elif choice == '3':
 
-        # drink = 함수이름(current_player, players_re)
+        drink = koreanGame(current_player, players_re, myself)
         print("2")
 
     elif choice == '4':
@@ -274,7 +242,7 @@ while (True):
         print("4")
     elif choice == '5':
 
-        # drink = 함수이름(current_player, players_re)
+        drink = updownGs(current_player, players_re)
         print("5")
 
     right_now_final[drink] += 1

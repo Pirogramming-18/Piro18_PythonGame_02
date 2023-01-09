@@ -1,6 +1,6 @@
 import time; import random
 
-def game_369(current_player, players_re):
+def game_369(current_player, players_re, myself):
 
     print('''
     --------------------------------------------------------------------------------------
