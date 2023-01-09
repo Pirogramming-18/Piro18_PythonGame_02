@@ -5,7 +5,7 @@
 
 
 import random
-
+from game_369 import game_369
 
 players = ['윤정', '준서', '홍구', '채원', '선재']
 players_re = []
@@ -177,7 +177,7 @@ if choice == '1':
     drink = apartment(current_player, players_re)
 elif choice == '2':
 
-    # drink = 함수이름(current_player, players_re)
+    drink = game_369(current_player, players_re)
     print("2")
 
 elif choice == '3':
@@ -260,7 +260,7 @@ while (True):
 
     elif choice == '2':
 
-        # drink = 함수이름(current_player, players_re)
+        drink = game_369(current_player, players_re)
         print("2")
 
     elif choice == '3':
