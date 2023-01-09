@@ -1,4 +1,4 @@
-import random
+import random; import time
 from game_369 import game_369
 from koreanGame import koreanGame
 from updown import updownGs
@@ -216,11 +216,18 @@ while (True):
         quit()
 
     current_player = random.choice(players_re)
-
-    choice = input('{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(current_player))
+    
+    if current_player == myself:
+        choice = input('{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(current_player))
+    else:
+        print('{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(current_player), end='')
+        choice = random.randint(1,5)
+        time.sleep(1)
+        print(choice)
+    
 
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-    print('{0} 님이 게임을 선택하셨습니다! 😄'.format(current_player))
+    print('{0} 님이 게임을 {1}번으로 선택하셨습니다! 😄'.format(current_player, choice))
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
     if choice == '1':

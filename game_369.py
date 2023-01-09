@@ -71,11 +71,11 @@ def ans_or_wrong_369(num):
         if i == 3 or i == 6 or i == 9:
             answer += 1
     if answer == 0:
-        for __ in range(2):
+        for __ in range(4):
             answer_list.append(str(num))
         answer_list.append('짝'*random.randint(1,3))
     else:
-        for __ in range(2):
+        for __ in range(4):
             answer_list.append('짝'*answer)
         answer_list.append(str(num))
     return answer_list
