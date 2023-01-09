@@ -17,7 +17,7 @@ def grading(tagger,temp,ans,now,players):#temp는 추측한 수
         tryans=-1
         return tryans
 
-def correct(now,players):
+def correct(now,players,playersIndex):
     if players.index(now)==playersIndex:
         print(f"{now}이/가 정답을 맞췄음으로 다음 사람인 {players[0]} 이/가 술을 마십니다@@")
         return players[0]
@@ -91,7 +91,7 @@ def updownGs(current_player, players):
                         tryans=random.randrange(0,tryans) 
                         continue
                     elif tryans==ans: #게임 끝
-                        drinking=correct(now,players)
+                        drinking=correct(now,players,playersIndex)
                         temp=-1         
                         return drinking      
 
@@ -125,5 +125,5 @@ def updownGs(current_player, players):
                 players[tagger][1]-=1
                 break
             else : #차례가 끝나기 전에 맞춤
-                drinking=correct(now)
+                drinking=correct(now,players,playersIndex)
                 return drinking     
