@@ -1,17 +1,7 @@
 import random
 from time import sleep
-#플레이어 설정
-#팀원: 윤정,홍구,준서,선재,채원
-#main 파트
 
-num=int(input("참여시킬 플레이어(1~3)"))
-team=["윤정" ,"채원" ,"선재","홍구","준서"]
-players=random.sample(team,num) #참여할 플레이어 랜덤 선택하기
-players.append("플레이어") #임의로 선정!- main에서 해야할것 같음
-playersIndex=len(players)-1 #플레이어의 번호
-
-
-def grading(tagger,temp,ans,now):#temp는 추측한 수
+def grading(tagger,temp,ans,now,players):#temp는 추측한 수
     print(f"{now} : {temp} ")
     if temp<ans:
         print(f"{players[tagger]} : UP! ")
@@ -27,7 +17,7 @@ def grading(tagger,temp,ans,now):#temp는 추측한 수
         tryans=-1
         return tryans
 
-def correct(now):
+def correct(now,players):
     if players.index(now)==playersIndex:
         print(f"{now}이/가 정답을 맞췄음으로 다음 사람인 {players[0]} 이/가 술을 마십니다@@")
         return players[0]
@@ -35,7 +25,7 @@ def correct(now):
         print(f"{now}이/가 정답을 맞췄음으로 다음 사람인 {players[players.index(now)+1]} 이/가 술을 마십니다@@")
         return players[players.index(now)+1]
 
-def updownGs():
+def updownGs(current_player, players):
     #인트로~~
     print('''
 --------------------------------------------------------------------------------------
@@ -71,6 +61,8 @@ def updownGs():
     tryans=0
     temp=20
     tryans=random.randrange(1,51) #도전하는 수
+    playersIndex=len(players)-1 #플레이어의 번호
+    
     #술래 == 플레이어
     if tagger==playersIndex:
         print(f"소주 뚜껑에 적힌 숫자는 {ans} 입니다! 잘 기억하고 대답해주세요 (* ＞з＜)")
@@ -99,7 +91,7 @@ def updownGs():
                         tryans=random.randrange(0,tryans) 
                         continue
                     elif tryans==ans: #게임 끝
-                        drinking=correct(now)
+                        drinking=correct(now,players)
                         temp=-1         
                         return drinking      
 
@@ -108,8 +100,6 @@ def updownGs():
                 print("이게임 누가했어!😫😫  이게임 누가했어!😫😫")
                 print(f"술래인 {players[tagger]} 이/가 술을 마십니다")
                 return players[tagger]
-                players[tagger][1]-=1
-                break
 
     #술래 != 플래이어
     else:
@@ -119,12 +109,12 @@ def updownGs():
                     continue
                 elif players.index(now)==playersIndex: #플레이어 차례
                     temp=int(input("숫자를 맞춰보세요!(1~50) : "))
-                    tryans=grading(tagger,temp,ans,now)
+                    tryans=grading(tagger,temp,ans,now,players)
                     if tryans==-1: # 플레이어가 정답 맞춘 경우
                         break
                 else: #다른 사람들 차례
                     temp=tryans
-                    tryans=grading(tagger,temp,ans,now)
+                    tryans=grading(tagger,temp,ans,now,players)
                     if tryans==-1:
                         break
             if tryans !=-1:
@@ -136,10 +126,4 @@ def updownGs():
                 break
             else : #차례가 끝나기 전에 맞춤
                 drinking=correct(now)
-                return drinking      
-
-                break
-
-
-a=updownGs()
-print(a)#추가
+                return drinking     
