@@ -15,7 +15,6 @@ right_now_final = {}
 players_amount = [2, 4, 6, 8, 10]
 players_amount_re = []
 player_dic = {}
-playersIndex=len(players)-1 #플레이어의 번호
 
 def apartment(player, list):
 
