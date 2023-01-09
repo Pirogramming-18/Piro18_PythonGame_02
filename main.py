@@ -158,7 +158,7 @@ elif choice == '4':
     drink = subway_game(players_re, turn, myself)
 
 elif choice == '5':
-    drink = updownGs(current_player, players_re,playersIndex, myself)
+    drink = updownGs(current_player, players_re,playersIndex)
 
 right_now_final[drink] += 1
 
@@ -241,6 +241,6 @@ while (True):
         drink = subway_game(players_re, turn, myself)
 
     elif choice == 5:#추가(변경)
-        drink = updownGs(current_player, players_re,playersIndex, myself)
+        drink = updownGs(current_player, players_re,playersIndex)
 
     right_now_final[drink] += 1

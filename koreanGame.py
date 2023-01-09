@@ -3,6 +3,7 @@ import random
 from bs4 import BeautifulSoup as bs
 
 def koreanGame(current_pl, pl_re, myself):
+
     print('''
     ---------------------------------------------------------------------------
     _   __                                   _____                         
@@ -15,15 +16,21 @@ def koreanGame(current_pl, pl_re, myself):
     ---------------------------------------------------------------------------
                                                                             ''')
     print('📖훈민정~음 훈민정~음!🎶  ')
-    korean = input('두 자리 초성을 입력해주세요 ex) ㄱㄴ : ')
+    if current_pl==myself:
+        korean = input('두 자리 초성을 입력해주세요 ex) ㄱㄴ : ')
+    else:
+        korean_list = ['ㄱ','ㄴ','ㄷ','ㄹ','ㅁ','ㅂ','ㅅ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ']
+        korean = random.choice(korean_list)+random.choice(korean_list)
+    print(f'초성은 {korean} !')
+
     # 스크래핑으로 초성 사이트에서 단어를 가져온다
     word_list = []
     my_list = list(pl_re)
-    for page in range(1, 4):
+    for page in range(1, 3):
         url = f"https://wordrow.kr/%EC%B4%88%EC%84%B1/{korean}/?%EC%AA%BD={page}"
         res = requests.get(url)
         soup = bs(res.text, "html.parser")
-        word_list += [word.get_text() for word in soup.select("body > div.content > section > div.larger > ul > li > a > b")[0:10]]
+        word_list += [word.get_text() for word in soup.select("body > div.content > section > div.larger > ul > li > a > b")[0:20]]
     random.shuffle(word_list)
     random.shuffle(my_list)
 
