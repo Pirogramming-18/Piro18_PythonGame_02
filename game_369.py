@@ -41,7 +41,7 @@ def game_369(current_player, players_re, myself):
         choice = ans_or_wrong_369(num)
         correct_ans = choice[0]
         wrong_ans = choice[-1]
-        if start_person_369 == current_player:
+        if start_person_369 == myself:
             final_choice = input('어떻게 대답할래요?')
         else:
             final_choice = random.choice(choice)

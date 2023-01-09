@@ -28,7 +28,7 @@ def correct(now, players,playersIndex):
         return players[players.index(now)+1]
 
 
-def updownGs(current_player, players,playersIndex):
+def updownGs(current_player, players, playersIndex, myself):
     # 인트로~~
     print('''
 --------------------------------------------------------------------------------------
@@ -56,6 +56,7 @@ def updownGs(current_player, players,playersIndex):
     # 인트로~~
 
     tagger = random.randrange(0, len(players))  # 술래 인덱스
+    myself_idx = players.index(myself)
     print(f"술래는 {players[tagger]}!!!")
     print(f"게임 진행 순서 :{players}")# 추가
     ans = random.randrange(1, 51)  # 정답
@@ -64,7 +65,8 @@ def updownGs(current_player, players,playersIndex):
     playersIndex = len(players)-1  # 플레이어의 번호
 
     # 술래 == 플레이어
-    if tagger == playersIndex:
+    # if tagger == myself_idx:
+    if True:
         print(f"소주 뚜껑에 적힌 숫자는 {ans} 입니다! 잘 기억하고 대답해주세요 (* ＞з＜)")
         print("----------START----------")
         while tryans != ans:

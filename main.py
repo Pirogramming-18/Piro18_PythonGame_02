@@ -4,6 +4,7 @@ from game_369 import game_369
 from koreanGame import koreanGame
 from updown import updownGs
 from apartment import apartment
+from subway import subway_game
 
 players = ['윤정', '준서', '홍구', '채원', '선재']
 players_re = []
@@ -13,6 +14,7 @@ players_amount = [2, 4, 6, 8, 10]
 players_amount_re = []
 player_dic = {}
 playersIndex = len(players)-1
+turn = 1
 
 
 
@@ -153,11 +155,10 @@ elif choice == '3':
     drink = koreanGame(current_player, players_re, myself)
 
 elif choice == '4':
-    # drink = 함수이름(current_player, players_re)
-    print("4")
+    drink = subway_game(players_re, turn, myself)
 
 elif choice == '5':
-    drink = updownGs(current_player, players_re,playersIndex) #추가
+    drink = updownGs(current_player, players_re,playersIndex, myself)
 
 right_now_final[drink] += 1
 
@@ -237,10 +238,9 @@ while (True):
         drink = koreanGame(current_player, players_re, myself)
 
     elif choice == 4:#추가(변경)
-        # drink = 함수이름(current_player, players_re)
-        print("4")
+        drink = subway_game(players_re, turn, myself)
 
     elif choice == 5:#추가(변경)
-        drink = updownGs(current_player, players_re,playersIndex) #추가
+        drink = updownGs(current_player, players_re,playersIndex, myself)
 
     right_now_final[drink] += 1

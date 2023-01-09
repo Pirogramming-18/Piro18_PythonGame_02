@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from pprint import pprint
 from time import sleep
 
-def subway_game() :
+def subway_game(players, turn, myself) :
 
 
     print('''''')
@@ -22,16 +22,16 @@ def subway_game() :
     print('''''')
     print('''''')
 
-    players = ['윤정', '준서', '홍구', '채원', '선재']
-    players_re = []
-    right_now = []
-    right_now_final = {}
-    players_amount = [2, 4, 6, 8, 10]
-    players_amount_re = []
-    player_dic = {}
-    playersIndex = len(players)-1
+    # players = ['윤정', '준서', '홍구', '채원', '선재']
+    # players_re = []
+    # right_now = []
+    # right_now_final = {}
+    # players_amount = [2, 4, 6, 8, 10]
+    # players_amount_re = []
+    # player_dic = {}
+    # playersIndex = len(players)-1
     correct_line_num = [1,2,3,4]
-    turn=1
+    # turn=1
 
 
     while True:
@@ -39,6 +39,9 @@ def subway_game() :
 
         if turn == 1:
             while True:
+                print('호선을 선택할 사람은 ...!!',end=' ')
+                sleep(1)
+                print('{}입니다!'.format(myself))
                 line_num = int(input('1호선 ~ 4호선 선택해주세요! : '))
                 if line_num in correct_line_num:
                     break
@@ -111,14 +114,14 @@ def subway_game() :
                         break
                     else:
                         answer_list.append(auto_answer[3])
-                    print(f'{players[4]} : ',auto_answer[4])
-                    if auto_answer[4] in answer_list:
-                        print(f'이미 나왔습니다!! {players[4]} 패배')
-                        print(f'아 누가 술을 마셔?! {players[4]} 너가 마셔 원~~샷!!')
-                        return players[4]
-                        break
-                    else:
-                        answer_list.append(auto_answer[4])
+                    # print(f'{players[4]} : ',auto_answer[4])
+                    # if auto_answer[4] in answer_list:
+                    #     print(f'이미 나왔습니다!! {players[4]} 패배')
+                    #     print(f'아 누가 술을 마셔?! {players[4]} 너가 마셔 원~~샷!!')
+                    #     return players[4]
+                    #     break
+                    # else:
+                    #     answer_list.append(auto_answer[4])
                     
                 else:
                     print('틀렸습니다!! *플레이어 패배*')
@@ -161,14 +164,14 @@ def subway_game() :
                     break
                 else:
                     answer_list.append(auto_answer[3])
-                print(f'{players[4]} : ',auto_answer[4])
-                if auto_answer[4] in answer_list:
-                    print(f'이미 나왔습니다!! {players[4]} 패배')
-                    print(f'아 누가 술을 마셔?! {players[4]}너가 마셔 원~~샷!!')
-                    return players[4]
-                    break
-                else:
-                    answer_list.append(auto_answer[4])
+                # print(f'{players[4]} : ',auto_answer[4])
+                # if auto_answer[4] in answer_list:
+                #     print(f'이미 나왔습니다!! {players[4]} 패배')
+                #     print(f'아 누가 술을 마셔?! {players[4]}너가 마셔 원~~샷!!')
+                #     return players[4]
+                #      break
+                # else:
+                #     answer_list.append(auto_answer[4])
                 station = input(f'{line_num}호선에 해당하는 역을 입력해주세요: ')
                 if station in metro_list :
                     print('맞았습니다!')
@@ -178,4 +181,4 @@ def subway_game() :
                     answer_list.clear()
                     break
 
-subway_game()
+# subway_game()
