@@ -3,6 +3,7 @@ import random
 from bs4 import BeautifulSoup as bs
 
 def koreanGame(current_pl, pl_re, myself):
+
     print('''
     ---------------------------------------------------------------------------
     _   __                                   _____                         
