@@ -35,7 +35,7 @@ def correct(now):
         print(f"{now}이/가 정답을 맞췄음으로 다음 사람인 {players[players.index(now)+1]} 이/가 술을 마십니다@@")
         return players[players.index(now)+1]
 
-def updown():
+def updownGs():
     #인트로~~
     print('''
 --------------------------------------------------------------------------------------
@@ -141,5 +141,5 @@ def updown():
                 break
 
 
-a=updown()
+a=updownGs()
 print(a)#추가
