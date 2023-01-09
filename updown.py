@@ -1,7 +1,6 @@
 import random
 from time import sleep
 
-
 def grading(tagger, temp, ans, now, players):  # temp는 추측한 수
     print(f"{now} : {temp} ")
     if temp < ans:
@@ -19,7 +18,7 @@ def grading(tagger, temp, ans, now, players):  # temp는 추측한 수
         return tryans
 
 
-def correct(now, players):
+def correct(now, players,playersIndex):
     if players.index(now) == playersIndex:
         print(f"{now}이/가 정답을 맞췄음으로 다음 사람인 {players[0]} 이/가 술을 마십니다@@")
         return players[0]
@@ -29,7 +28,7 @@ def correct(now, players):
         return players[players.index(now)+1]
 
 
-def updownGs(current_player, players):
+def updownGs(current_player, players,playersIndex):
     # 인트로~~
     print('''
 --------------------------------------------------------------------------------------
@@ -56,53 +55,51 @@ def updownGs(current_player, players):
     print("""♫♪♫"업 엔 다운~~ 업 엔 다운!♫♪♫""")
     # 인트로~~
 
-    choice = list(range(1, 51, 1))  # 선택했던 숫자들 빼고!
     tagger = random.randrange(0, len(players))  # 술래 인덱스
     print(f"술래는 {players[tagger]}!!!")
-    print(f"게임 진행 순서 :{players}")  # 추가
+    print(f"게임 진행 순서 :{players}")# 추가
     ans = random.randrange(1, 51)  # 정답
-    print(f"정답은 {ans}")
     tryans = 0
     temp = 20
-    tryans = random.randrange(1, 51)  # 도전하는 수
     playersIndex = len(players)-1  # 플레이어의 번호
 
     # 술래 == 플레이어
     if tagger == playersIndex:
         print(f"소주 뚜껑에 적힌 숫자는 {ans} 입니다! 잘 기억하고 대답해주세요 (* ＞з＜)")
-        # 화면 리셋 시킬까....?
         print("----------START----------")
         while tryans != ans:
             for now in players*2:
                 if tryans == ans or temp == -2:
                     break  # 게임 끝
+
                 if players.index(now) == tagger:
                     temp = 0  # 술래 차례
                     continue
+
                 else:
+                    tryans = random.randrange(1, 51)
                     print(f"{now} : {tryans}!!")  # 첫번째 추측
                     quest = input(">>>> up or down?(u/d)")
                     if quest == "u" and tryans < ans:
-                        tryans = random.randrange(
-                            tryans+1, 51)  # 다음사람이 도전 할 숫자
+                        tryans = random.randrange(tryans+1, 51)  # 다음사람이 도전 할 숫자
                         continue
                     elif (tryans < ans and quest != "u") or (tryans > ans and quest != "d"):
                         print("이런... 술래가 틀려버렸네요")
                         print(f"술래인 {players[tagger]} 이/가 술을 마십니다")
                         temp = -2
                         return players[tagger]
-
                     elif quest == "d" and tryans > ans:
                         tryans = random.randrange(0, tryans)
                         continue
                     elif tryans == ans:  # 게임 끝
-                        drinking = correct(now, players)
+                        drinking = correct(now, players,playersIndex)
                         temp = -1
                         return drinking
-
+                #temp 기본 20/ 술래가 틀리면 -2, 중간에 끝나면 -1임.
             if temp != -1 and temp != -2:
                 print("이런... 2바퀴동안 아무도 못맞췄어요ㅠㅠ")
                 print("이게임 누가했어!😫😫  이게임 누가했어!😫😫")
+                sleep(0.5)
                 print(f"술래인 {players[tagger]} 이/가 술을 마십니다")
                 return players[tagger]
 

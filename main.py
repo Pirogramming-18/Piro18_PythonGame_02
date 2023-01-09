@@ -15,6 +15,8 @@ player_dic = {}
 playersIndex = len(players)-1
 
 
+
+
 print('''
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
               ___   _               _             _
@@ -143,23 +145,19 @@ print('{0} 님이 게임을 선택하셨습니다! 😄'.format(current_player))
 print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 if choice == '1':
     drink = apartment(current_player, players_re)
-elif choice == '2':
 
+elif choice == '2':
     drink = game_369(current_player, players_re, myself)
 
 elif choice == '3':
-
     drink = koreanGame(current_player, players_re, myself)
 
 elif choice == '4':
-
     # drink = 함수이름(current_player, players_re)
     print("4")
 
 elif choice == '5':
-
-    drink = updownGs(current_player, players_re)
-
+    drink = updownGs(current_player, players_re,playersIndex) #추가
 
 right_now_final[drink] += 1
 
@@ -176,7 +174,7 @@ while (True):
         print(' 치사량까지 {0}'.format(value))
 
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
-
+    time.sleep(0.5) #추가
     for name in players_re:
         if player_dic[name]-right_now_final[name] == 0:
             print('''
@@ -216,11 +214,11 @@ while (True):
     current_player = random.choice(players_re)
 
     if current_player == myself:
-        choice = input(
-            '{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(current_player))
+        choice = int(input(
+            '{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(current_player)))
     else:
         print('{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(
-            current_player), end='')
+            current_player)) #추가(변경)
         choice = random.randint(1, 5)
         time.sleep(1)
         print(choice)
@@ -229,24 +227,20 @@ while (True):
     print('{0} 님이 게임을 {1}번으로 선택하셨습니다! 😄'.format(current_player, choice))
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
-    if choice == '1':
+    if choice == 1:#추가(변경)
         drink = apartment(current_player, players_re)
 
-    elif choice == '2':
-
+    elif choice == 2:#추가(변경)
         drink = game_369(current_player, players_re, myself)
 
-    elif choice == '3':
-
+    elif choice == 3:#추가(변경)
         drink = koreanGame(current_player, players_re, myself)
 
-    elif choice == '4':
-
+    elif choice == 4:#추가(변경)
         # drink = 함수이름(current_player, players_re)
         print("4")
 
-    elif choice == '5':
-
-        drink = updownGs(current_player, players_re)
+    elif choice == 5:#추가(변경)
+        drink = updownGs(current_player, players_re,playersIndex) #추가
 
     right_now_final[drink] += 1
