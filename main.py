@@ -1,4 +1,5 @@
-import random; import time
+import random
+import time
 from game_369 import game_369
 from koreanGame import koreanGame
 from updown import updownGs
@@ -11,8 +12,7 @@ right_now_final = {}
 players_amount = [2, 4, 6, 8, 10]
 players_amount_re = []
 player_dic = {}
-playersIndex=len(players)-1
-
+playersIndex = len(players)-1
 
 
 print('''
@@ -146,12 +146,10 @@ if choice == '1':
 elif choice == '2':
 
     drink = game_369(current_player, players_re, myself)
-    print("2")
 
 elif choice == '3':
 
     drink = koreanGame(current_player, players_re, myself)
-    print("3")
 
 elif choice == '4':
 
@@ -160,8 +158,8 @@ elif choice == '4':
 
 elif choice == '5':
 
-    # drink = 함수이름(current_player, players_re)
-    print("5")
+    drink = updownGs(current_player, players_re)
+
 
 right_now_final[drink] += 1
 
@@ -216,15 +214,16 @@ while (True):
         quit()
 
     current_player = random.choice(players_re)
-    
+
     if current_player == myself:
-        choice = input('{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(current_player))
+        choice = input(
+            '{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(current_player))
     else:
-        print('{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(current_player), end='')
-        choice = random.randint(1,5)
+        print('{0}(이)가~ 좋아하는~ 랜덤~ 게임~! 무슨~ 게임? : '.format(
+            current_player), end='')
+        choice = random.randint(1, 5)
         time.sleep(1)
         print(choice)
-    
 
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     print('{0} 님이 게임을 {1}번으로 선택하셨습니다! 😄'.format(current_player, choice))
@@ -236,20 +235,18 @@ while (True):
     elif choice == '2':
 
         drink = game_369(current_player, players_re, myself)
-        print("2")
 
     elif choice == '3':
 
         drink = koreanGame(current_player, players_re, myself)
-        print("2")
 
     elif choice == '4':
 
         # drink = 함수이름(current_player, players_re)
         print("4")
+
     elif choice == '5':
 
         drink = updownGs(current_player, players_re)
-        print("5")
 
     right_now_final[drink] += 1
